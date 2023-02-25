@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open('1012_input.txt')
+
 dx = [0, 0, 1, -1] # 방향 델타
 dy = [1, -1, 0, 0]
 
@@ -17,6 +20,17 @@ def bfs(x, y):
                 queue.append((nx, ny))
     return
 
+# DFS 풀이 (재귀)
+sys.setrecursionlimit(10000) 
+
+def DFS(x, y):
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+
+        if (0 <= nx < N and 0 <= ny < M) and arr[nx][ny] == 1:
+            arr[nx][ny] = 0
+            DFS(nx, ny)
 
 T = int(input())
 for tc in range(T):
@@ -33,6 +47,7 @@ for tc in range(T):
             if arr[i][j] == 1:
             # 배추 있는 곳 만나면 함수 실행에서 인접한 배추 다 0으로 바꿈    
                 bfs(i, j) 
+                DFS(i, j)
                 cnt += 1
     
     print(cnt)
