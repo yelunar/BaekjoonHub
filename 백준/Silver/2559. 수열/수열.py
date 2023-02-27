@@ -1,3 +1,7 @@
+import sys
+# sys.stdin = open('input.txt')
+input = sys.stdin.readline
+
 N, K = map(int, input().split()) # 온도, 측정한 전체 날짜 수
 arr = list(map(int, input().split()))
 
