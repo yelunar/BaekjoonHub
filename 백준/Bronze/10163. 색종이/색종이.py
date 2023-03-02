@@ -1,4 +1,4 @@
-arr = [[''] * 1001 for i in range(1001)] # 도화지
+arr = [[''] * 1003 for i in range(1003)] # 도화지
 N = int(input()) # 색종이 장수
 for k in range(N):
     x, y, width, height = map(int, input().split())
