@@ -25,7 +25,7 @@ enumerate는 인덱스와 값을 모두 for 문에서 사용할 수 있고
 
 for key value in student.items() 처럼 이는 딕셔너리의 키 값과 밸류 값을 모두 포문으로 돌릴때 짱짱 유용하다. 
 만약 student가 딕셔너리가 아닌 리스트라면, 
-for key value in zip (student1, student2) 처럼 z
-ip()함수를 사용하면 여러 변수를 쓸 수 있다.
+for key value in zip (student1, student2) 처럼 
+zip()함수를 사용하면 여러 변수를 쓸 수 있다.
 
 """
