@@ -13,18 +13,18 @@ sys.setrecursionlimit(10000)
 """
 
 def binarysearch(target):
-    start, end = 0, max(arr)
-    while start <= end:
+    start, end = 0, max(arr)    # 시작 위치와 끝 위치를 지정
+    while start <= end: # 시작 위치가 끝 위치를 넘지 않을 때까지 반복
         mid = (start+end) // 2
-        cnt = 0
+        cnt = 0 # 자른 나무의 길이를 합산할 변수
         for tree in arr:
-            if tree > mid:
-                cnt += tree- mid
-        if cnt < target:
-            end = mid -1
+            if tree > mid:  # 현재 위치보다 높이가 높은 나무만 자를 수 있음
+                cnt += tree- mid # 자른 나무의 길이를 합산
+        if cnt < target: # 합산된 자른 나무의 길이가 가져가려는 길이보다 작으면
+            end = mid -1  # 자를 위치를 더 위쪽으로 이동하여 나무의 길이를 더 높임
         else:
-            start = mid + 1    
-    return end
+            start = mid + 1      # 자를 위치를 더 아래쪽으로 이동하여 나무의 길이를 더 낮춤
+    return end  # 가져갈 수 있는 가장 긴 나무의 길이를 반환
 
 N, M = map(int, input().split()) # 나무의 수 N과 집으로 가져가려고 하는 나무의 길이 M / 4 7
 arr = list(map(int, input().split())) # 20 15 10 17
