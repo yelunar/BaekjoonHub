@@ -4,7 +4,7 @@ input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
 
 """
-
+시간초과 레전드
 """
 def DFS(depth, idx):
     global flag
@@ -12,7 +12,8 @@ def DFS(depth, idx):
     if depth == 5:
         flag = 1
         return
-    visited[idx] = True
+    
+    visited[idx] = True  
     for i in friends[idx]:
         if not visited[i]:
             DFS(depth+1, i)
@@ -34,7 +35,7 @@ visited = [False] * N
 for i in range(N):
     if not visited[i]:
         DFS(1,i)
-    if flag == 1:
+    if flag == 1: # 이 조건을 넣어줘야 계속 안돈다
         break
 
 print(flag)
