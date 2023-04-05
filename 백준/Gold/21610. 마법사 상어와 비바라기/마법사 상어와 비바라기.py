@@ -1,4 +1,5 @@
 import sys
+# sys.stdin = open('input.txt')
 input = sys.stdin.readline
 sys.setrecursionlimit(10000)
 
@@ -50,7 +51,6 @@ for i in range(M):
 
     clouds = [] # 구름 모두 소멸
 
-
     di = [-1, -1, 1, 1] # 인접 대각선 조사
     dj = [1, -1, 1, -1]
 
@@ -65,13 +65,15 @@ for i in range(M):
                 cnt += 1
         arr[i][j] += cnt
 
-    # 4. 바구니에 저장된 물의 양이 2 이상인 모든 칸에 구름이 생기고, 물의 양이 2 줄어든다. 이때 구름이 생기는 칸은 3에서 구름이 사라진 칸이 아니어야 한다.
+    # 바구니에 저장된 물의 양이 2 이상인 모든 칸에 구름이 생기고, 물 2개 빼줌
+    # 구름이 생기는 칸은 3에서 구름이 사라진 칸이 아니어야 함
     for i in range(N):
         for j in range(N):
             if arr[i][j] >= 2 and visited[i][j] == 0:
                 arr[i][j] -= 2
                 clouds.append([i,j])
-total = 0
+
+ans = 0
 for i in range(N):
-    total += sum(arr[i])
-print(total)
+    ans += sum(arr[i])
+print(ans)
