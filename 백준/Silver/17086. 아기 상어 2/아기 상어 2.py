@@ -3,6 +3,10 @@ input = sys.stdin.readline
 # sys.stdin = open("input1.txt")
 sys.setrecursionlimit(1000000)
 
+"""
+<아기상어2>
+0은 빈 칸, 1은 아기 상어가 있는 칸
+"""
 from collections import deque
 
 dx = [-1, -1, -1, 0, 1, 0, 1, 1]
@@ -10,7 +14,6 @@ dy = [-1, 0, 1, 1, 1, -1, 0, -1]
 
 
 def bfs():
-    global ans
 
     while queue:
         x, y = queue.popleft()
@@ -22,7 +25,9 @@ def bfs():
                 if arr[nx][ny] == 0:
                     arr[nx][ny] = arr[x][y] + 1
                     queue.append((nx, ny))  # 새로운 지점의 좌표를 큐에 삽입
- 
+# 위에 append 할때 소괄호 대괄호 둘다 노상관
+#  근데 소괄호가 튜플이라서 속도가 더 빠르대
+
 ##################################################################
 
 N, M = map(int, input().split())
@@ -38,4 +43,4 @@ for i in range(N):
 bfs()
 
 print(max(map(max, arr))-1)   
-#print(max(max(arr))-1)              
+# print(max(max(arr))-1)
