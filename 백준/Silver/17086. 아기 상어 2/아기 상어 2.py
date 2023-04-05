@@ -3,10 +3,6 @@ input = sys.stdin.readline
 # sys.stdin = open("input1.txt")
 sys.setrecursionlimit(1000000)
 
-"""
-<아기상어2>
-0은 빈 칸, 1은 아기 상어가 있는 칸
-"""
 from collections import deque
 
 dx = [-1, -1, -1, 0, 1, 0, 1, 1]
@@ -14,6 +10,7 @@ dy = [-1, 0, 1, 1, 1, -1, 0, -1]
 
 
 def bfs():
+    global ans
 
     while queue:
         x, y = queue.popleft()
@@ -41,4 +38,4 @@ for i in range(N):
 bfs()
 
 print(max(map(max, arr))-1)   
-# print(max(max(arr))-1)         
+#print(max(max(arr))-1)              
