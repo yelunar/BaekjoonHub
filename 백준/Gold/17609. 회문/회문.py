@@ -28,16 +28,13 @@ def check(words):
                 start += 1
                 end -= 1 
             else: 
-                if words[start] != words[end]:
-                    left = check_2(words, start + 1, end)
-                    right = check_2(words, start, end - 1)
-                    if left or right:
-                        return 1
-                    else:
-                        return 2
+                left = check_2(words, start + 1, end)
+                right = check_2(words, start, end - 1)
+                if left or right:
+                    return 1
                 else:
-                    start += 1
-                    end -= 1
+                    return 2
+
 
 #---------------------------------------
 for _ in range(int(sys.stdin.readline())):
