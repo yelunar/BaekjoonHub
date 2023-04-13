@@ -12,7 +12,7 @@ output: 그은 선의 총 길이
 using namespace std;
 typedef pair<int, int> P;
 
-P arr[1000004]; // 선의 위치 정보를 저장하는 배열
+P arr[1000001]; // 선의 위치 정보를 저장하는 배열
 int n, from, to, l, r, ret; // 입력값, 왼쪽 끝, 오른쪽 끝, 결과값을 저장하는 변수
 int main() {
 	ios_base::sync_with_stdio(false); // C++ 표준 입출력 속도 향상
