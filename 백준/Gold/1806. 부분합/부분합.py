@@ -12,7 +12,7 @@ sys.setrecursionlimit(10000)
 n, s = map(int, input().split()) # n 수열길이 / 합이 s 이상 되는 것
 arr = list(map(int, input().split()))
 
-cnt = arr[0] # 합
+cnt = arr[0] # 초기값 설정
 left, right = 0, 0  # 투 포인터
 min_leng = sys.maxsize # 일단 최대값 넣음
 
@@ -22,7 +22,7 @@ while True:
         cnt -= arr[left] # 위치 옮길려고 빼줌
         left += 1
 
-    else:
+    else: # 작으면 범위 늘려줘야해!
         right += 1
         if right == n:
             break
