@@ -4,12 +4,9 @@ input = sys.stdin.readline
 
 """
 가까운 먹이를 찾는 탐색 문제이기 때문에 BFS
-
 BFS를 사용할 시 입력으로는 현재 아기 상어의 위치를 생각할 수 있고, 
 출력으로는 후보를 리스트를 반환
-
 후보 리스트는 우선 순위가 있기 때문에 정렬 사용
-
 """
 
 from collections import  deque
