@@ -7,15 +7,12 @@ sys.setrecursionlimit(10**6)
 <heap>
 heapq.heappush(heap, item)
 - item을 heap으로 push
-
 heapq.heappop(heap)
 - heap에서 가장 작은 항목을 pop
 - heap이 비어있다면 IndexError 발생
-
 heapq.heappushpop(heap, item)
 - 힙에 item을 push한 다음, heap에서 가장 작은 항목을 pop
 - heapq.heappush와 heapq.heappop을 이어서 호출하는 것과 동일한 결과이지만, 더 효율적으로 실행
-
 heapq.heapify(x)
 - 리스트 x를 heap으로 변환
 """
