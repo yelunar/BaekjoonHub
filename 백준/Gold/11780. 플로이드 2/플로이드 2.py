@@ -1,8 +1,7 @@
 import sys
 input = sys.stdin.readline
-# sys.stdin = open("input1.txt")
-# sys.setrecursionlimit(1000000)
-
+# sys.stdin = open('input3.txt')
+sys.setrecursionlimit(10**6)
 
 """
 <플로이드2>
@@ -14,7 +13,7 @@ INF = int(1e9)
 n = int(input()) # 도시개수
 m = int(input()) # 버스개수
 graph = [[INF] * (n+1) for _ in range(n+1)] # 최소비용 반환
-trace = [[()] * (n+1) for _ in range(n+1)] # 최단 경로 반환
+ans = [[()] * (n+1) for _ in range(n+1)] # 최단 경로 반환
 
 # 같은 지점 0처리
 for i in range(1, n+1):
@@ -24,18 +23,18 @@ for i in range(1, n+1):
 for _ in range(m):
     a, b, c = map(int, input().split()) # 시작 도시 a, 도착 도시 b, 한 번 타는데 필요한 비용 c
     graph[a][b] = min(graph[a][b], c)
-    trace[a][b] = (a, b)
+    ans[a][b] = (a, b)
 
 # 플로이드 워셜
 for k in range(1, n+1):
     for i in range(1, n+1):
         for j in range(1, n+1):
-            cost = graph[i][k] + graph[k][j]
-            if graph[i][j] > cost:
-                graph[i][j] = cost
-                trace[i][j] = trace[i][k] + trace[k][j][1:]
+            if graph[i][j] > graph[i][k] + graph[k][j]:
+                graph[i][j] = graph[i][k] + graph[k][j]
+                ans[i][j] = ans[i][k] + ans[k][j][1:]
+              
 
-for i in range(1, n+1):
+for i in range(1, n+1): # (1) 최소 비용 출력
     tmp = []
     for j in range(1, n+1):
         if graph[i][j] == INF:
@@ -44,6 +43,8 @@ for i in range(1, n+1):
             tmp.append(graph[i][j])
     print(*tmp)
 
+# (2-1) 최소 비용에 포함되어 있는 도시 개수 출력, 
+# (2-2) 도시 i에서 도시 j로 가는 경로를 공백으로 구분해 출력
 for i in range(1, n+1):
     for j in range(1, n+1):
-        print(len(trace[i][j]), *trace[i][j])
+        print(len(ans[i][j]), *ans[i][j])
