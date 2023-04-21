@@ -15,7 +15,7 @@ dx = [-1, -1, 0, 1, 1, 1, 0, -1]
 dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
 n, m, k = map(int, input().split()) # N×N인 격자에 파이어볼 M개 K번 명령
-fireballs = []
+fireballs = deque()
 arr = [[[] for _ in range(n)] for _ in range(n)]
 for _ in range(m):
     ri, ci, mi, si, di = map(int, input().split())
@@ -24,7 +24,7 @@ for _ in range(m):
 for _ in range(k):
 
     while fireballs:
-        ri, ci, mi, si, di = fireballs.pop() # x, y, 질량, 속력, 방향
+        ri, ci, mi, si, di = fireballs.popleft() # x, y, 질량, 속력, 방향
         new_ri = (ri + dx[di]*si) % n
         new_ci = (ci + dy[di]*si) % n
         arr[new_ri][new_ci].append([mi, si, di])
