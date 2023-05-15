@@ -4,28 +4,28 @@ input = sys.stdin.readline
 sys.setrecursionlimit(10000)
 
 """
-투 포인터: 리스트에 순차적으로 접근해야 할 때 두 개의 점의 위치를 기록하면서 처리
-
-10 15
-5 1 3 5 10 7 4 9 2 8
+<투 포인터>
+연속된 수들의 부분합 중에 그 합이 S 이상이 되는 것 중, 가장 짧은 것의 길이를 구하는 프로그램
 """
-n, s = map(int, input().split()) # n 수열길이 / 합이 s 이상 되는 것
+n, s = map(int, input().split()) # 길이 N짜리 수열, 합이 S 이상
 arr = list(map(int, input().split()))
 
-cnt = arr[0] # 초기값 설정
-left, right = 0, 0  # 투 포인터
-min_leng = sys.maxsize # 일단 최대값 넣음
+left, right = 0, 0 # 처음 포인터는 둘다 0에서 시작
+ans_length = sys.maxsize
+ans = 0 # 합을 저장할 변수
 
 while True:
-    if cnt >= s: # 조건 만족하면
-        min_leng = min(min_leng, right - left+1) # 길이 반환
-        cnt -= arr[left] # 위치 옮길려고 빼줌
+    if ans >= s:
+        ans_length = min(ans_length, right-left)
+        ans -= arr[left]
         left += 1
-
-    else: # 작으면 범위 늘려줘야해!
+    elif right == n:
+        break
+    else:
+        ans += arr[right]
         right += 1
-        if right == n:
-            break
-        cnt += arr[right]
 
-print(0) if min_leng == sys.maxsize else print(min_leng)
+if ans_length == sys.maxsize:
+    print(0)
+else:
+    print(ans_length)
