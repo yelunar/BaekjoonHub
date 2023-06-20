@@ -24,25 +24,23 @@ int main(){
 	}
 	
 	int ans = arr[n-1]; // 나와야하는 숫자
+	dp[0][arr[0]] = 1; // 제일 첫번째 숫자는 계산하지 않고 그냥 들어감
 	
-	dp[0][arr[0]] = 1; // 제일 첫번째 숫자는 그냥 들어감
-	
-	for(int i=1; i<n-1; i++){
-		for(int j=0; j<=20; j++){
-			//if(dp[i-1][j] == 0) continue;
-			if(j+arr[i]<=20){
+	for(int i=1; i<n-1; i++){ // i=0은 처리했고 i=n-1은 나와야하는 숫자 
+		for (int j=0; j<=20; j++){ // 0부터 20까지의 숫자가 나올 수 있음			
+			if(j+arr[i] <=20){
 				dp[i][j+arr[i]] += dp[i-1][j];
 			}
-			if(j-arr[i]>=0){
+			if(j-arr[i] >=0){
 				dp[i][j-arr[i]] += dp[i-1][j];
 			}
-			
 		}
+		 
 	} 
 	
 	long long cnt;
 	cnt = dp[n-2][ans];
-	cout << cnt <<"\n";
+	cout << cnt << "\n";
 
 	return 0;
 	
